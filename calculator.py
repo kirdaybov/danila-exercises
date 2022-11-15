@@ -24,12 +24,19 @@ enter = input(f'Хотите ли Вы добавить что-то ещё?\nВ�
 if enter.upper() == 'Y':
     entered_type = input('Введите что-то из:{}?\n'.format(product_type.keys()))
     if  entered_type.lower() in product_type.keys():
-        entered_type_count = int(input(f'Напишите количество\n'))
-        cost = entered_type_count * product_type[entered_type]
+        entered_type_count = input(f'Напишите количество\n')
+        while not entered_type_count.isnumeric():           
+            entered_type_count = input('Напишите всё же число\n')
+        cost = int(entered_type_count) * product_type[entered_type]
         print(f'За {entered_type_count} {entered_type} Вы получите {cost}') 
+
 elif enter.upper() == 'N':
     print ('Всего доброго!')
 else:
     print('Вы ввели не то( Надеюсь, что Вы хотели закрыть программу,\nв противном случае мы не оставили Вам выбора.')
 
-#Проверить, что вводит юзер на количество
+
+#Зациклть эту программу и сделать выход из ней
+#While - пока
+#Условие - это тру или фолс. Действие - это действие.
+#Int - От integer(Целочисленный)
