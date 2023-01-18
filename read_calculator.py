@@ -21,6 +21,7 @@ product_type = {
 #5. перемножаем количество и цену получаем профит
 
 sum = 0
+costume_count = 0
 
 def in_dictionary(type, amount):
   if not (type in product_type.keys()):
@@ -36,41 +37,37 @@ def in_dictionary(type, amount):
   print (f'Вы получите {cost}')
   return cost
   
-def costume_cost(costume_txt, amount_costume):
-  costume_txt = words[0]
-  amount_costume = words[1] 
-  cost = 0
-  if 'costume' == costume_txt:
-    costume_count = int(amount_costume)
-    if 0 < costume_count <= 8:
-        print('За костюмы Вы получите 600 руб.')
-        cost += 600
-        return cost
-    elif costume_count <= 13:
-        print('За костюмы Вы получите 800 руб.')
-        cost += 800
-        return cost
-    elif costume_count <= 18:
-        print('За костюмы Вы получите 1000 руб.')
-        cost += 1000
-        return cost
-    else:
-        print('За костюмы Вы получите 1300 руб.')
-        cost += 1300
-        return cost
+def costume_cost(costume_count):
+  cost = 0   
+  if 0 < costume_count <= 8:
+      print('За костюмы Вы получите 600 руб.')
+      cost += 600
+      return cost 
+  elif costume_count <= 13:
+      print('За костюмы Вы получите 800 руб.')
+      cost += 800
+      return cost 
+  elif costume_count <= 18:
+      print('За костюмы Вы получите 1000 руб.')
+      cost += 1000
+      return cost 
+  else:
+      print('За костюмы Вы получите 1300 руб.')
+      cost += 1300
+      return cost 
 
 with open("rc.txt", "r") as file1:
     for line in file1:
         words = line.split()
         if len(words) == 2:
           if 'costume' == words[0]:
-            sum += costume_cost(words[0], words[1])
+            costume_count += int(words[1])
           else:
-            sum += in_dictionary(words[0], words[1])
+            sum += in_dictionary(words[0], words[1]) 
+sum += costume_cost(costume_count)                
 print(f'Всего Вы получите {sum}') 
 
-
-        
+       
       
         
 
