@@ -65,10 +65,51 @@
 #Тут есть мини баг, который я не знаю как пофиксить. Если округлять значение до 1-го символа - то округляется в большую сторону.
 
 #одиннадцатая задача
-man = float(input('Сколько мужчин в группе\n'))
-woman = float(input('Сколько женщин в группе\n'))
-sum_people = man + woman
-procent_man = man / sum_people
-procent_woman = woman / sum_people
-print('Процент мужчин -', procent_man * 100, '%')
-print('Процент женщин -', procent_woman * 100, '%')
+#man = float(input('Сколько мужчин в группе\n'))
+#woman = float(input('Сколько женщин в группе\n'))
+#sum_people = man + woman
+#procent_man = man / sum_people
+#procent_woman = woman / sum_people
+#print('Процент мужчин -', procent_man * 100, '%')
+#print('Процент женщин -', procent_woman * 100, '%')
+
+#git add .==> git commit -m """ ==> git push
+
+#двенадцатая задача
+#stock = 2000
+#stock_purchase_price = 40
+#share_sale_price = 42.75
+# 0.03 - это не магическое число, а процент биржевому брокеру
+#purchase_commission = (stock * stock_purchase_price) * 0.03
+#sales_commission = (stock * share_sale_price) * 0.03
+#sum_stock_purchase_price = stock * stock_purchase_price
+#sum_share_sale_price = stock * share_sale_price
+#purchase_amount = sum_stock_purchase_price + purchase_commission
+#sale_amount = sum_share_sale_price + sales_commission
+#total_amount = purchase_amount - (sum_share_sale_price + sales_commission)
+#print('Это сколько Джо отдал за покупку акций -', sum_stock_purchase_price)
+#print('Это сколько составила комисия брокоре при покупке -', purchase_commission)
+#print('Это сколько всего Джо потратил на покупку -', purchase_amount )
+#print('Это сумма, за которую Джо продал акции -', sum_share_sale_price)
+#print('Это сумма комисси, при продаже - ', sales_commission)
+#print('Это оставшаяся сумма у Джо, после всех махинаций - ', total_amount)
+#if total_amount > 0:
+#    print ('Джо оказался в плюсе на: ', total_amount)
+#else:
+#    print('Джо понес убытки в размере: ', total_amount) 
+
+#тринадцатая задачка
+#bed_length = float(input('Введите длину гряды в метрах\n'))
+#size_of_space_in_meters = float(input('Введите пространство, занимаемое концевой опорой в метрах\n'))
+#distance_between_grapes = float(input('Введите расстояние между виноградными лозами в метрах\n'))
+#number_of_vines = (bed_length - (2 * size_of_space_in_meters)) / distance_between_grapes
+#print('На гряде поместятся -', number_of_vines, 'лоз(а)')
+
+#четырнадцатая задачка
+initial_deposited_amount = float(input('Введите основную сумму, внесёную на счёт в самом начале\n'))
+annual_interest_rate = float(input('Введите годовую процентную ставку, начисляемую на остаток счета\n'))
+annual_interest_rate = annual_interest_rate / 100
+frequency_of_interest_income_per_year = float(input('Введите частоту начисления процентного дохода в год\n'))
+years_old_account = float(input('Введите кол-во лет сберегательного счёта\n'))
+grand_total = initial_deposited_amount * ((1 + (annual_interest_rate / frequency_of_interest_income_per_year))**(frequency_of_interest_income_per_year * years_old_account))
+print(f'Сумма денег, после заданного кол-во лет -{grand_total:.2f}')
