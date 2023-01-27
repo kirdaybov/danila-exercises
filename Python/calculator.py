@@ -52,4 +52,4 @@ print (f'Вы получите {sum}')
 
 #Условие - это тру или фолс. Действие - это действие.
 #Int - От integer(Целочисленный)
-#git add .==> git commit -m """ ==> git push.
+            #git add .==> git commit -m """ ==> git push.
