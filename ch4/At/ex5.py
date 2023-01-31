@@ -1,4 +1,6 @@
-num = 1
+sum = 0
+y = 30
 
-for num in range(0,30):
-    result = num
+for x in range(1,30):
+    sum = x / (y - x)
+print(sum)
