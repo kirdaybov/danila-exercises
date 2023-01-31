@@ -18,4 +18,4 @@ elif second > 86400:
     second = second - (minute * 60)
     print('Число дней равно - ', day,'Число часов равно - ', hour,'Число минут равно - ', minute, '\nЧисло секунд равно - ', second)
 else:
-    print('Число секунд - ', second)
+    print('Число секунд - ', second) 
