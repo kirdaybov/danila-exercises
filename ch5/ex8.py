@@ -2,7 +2,7 @@ area = int(input('Введите площадь окращеваемой пов�
 paint_jar_price = int(input('Введите стоимость 5-ти литровой банки краски:\n'))
 def calculate_paint_jar(area):
     VOLUME_JAR = 5.0
-    number_of_jar_paint = (area // 10 * VOLUME_JAR) // VOLUME_JAR
+    number_of_jar_paint = (area / 10 * VOLUME_JAR) / VOLUME_JAR
     print (f'Вам понадобится - {number_of_jar_paint} банок краски')
     return number_of_jar_paint
 
