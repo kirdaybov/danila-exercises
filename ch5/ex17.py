@@ -1,11 +1,12 @@
 def is_prime(num):
-    if num % num == 0 and num % 1 == 0 and num % 2 != 0:
-        print('T')
-        return True
-    else:
-        print('F')
-        return False
-
+    for x in range (2, num // 2): 
+        if num % x == 0:
+            print('F')
+            return False
+    print('T')
+    return True
 number = int(input('Введите число:\n'))
 
 is_prime(number)
+
+
