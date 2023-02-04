@@ -1,14 +1,13 @@
 infile = open('random numbers.txt', 'r')
+
 count = 0
-number = 0
 sum = 0
 for line in infile:
     number = int(line)
+    print(number)
     count += 1
     sum += number
     
-
-average = sum / count
-print(f'{average:.1f}')
+print(f'Сумма чисел равна - {sum:.1f}\nКол-во случайных чисел - {count:.1f}')
 
 infile.close()
