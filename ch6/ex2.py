@@ -1,9 +1,16 @@
-#name_file = input('Введите название файла:\n')
+name_file = input('Введите название файла:\n')
 
-#total = 5
+TOTAL = 5
 
-file_5str = open('my_name..txt','r')
-for line in file_5str(1,6):
+file = open(name_file,'r')
+index = 0
+for line in file.readlines():
+    index += 1
     print(line)
+    if index >= TOTAL:
+        break
 
-file_5str.close()
+file.close()
+
+# break - выход из цикла
+# continue - переход на следующую итерацию цикла
