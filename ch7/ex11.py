@@ -5,4 +5,10 @@ def LoShu(numbers):
         for elements in row:
             print(elements)
 
-LoShu(numbers)
+def sum_of_numbers(number_list):  #считаем сумму чисел в списке
+    total = 0
+    for num in number_list:
+        total += num
+    return total
+
+sum_of_numbers(numbers)
