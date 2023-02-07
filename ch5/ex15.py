@@ -14,11 +14,11 @@ def calc_average(num1, num2, num3, num4, num5):
 def determine_grade(average):
     if average >= 90:
         print('Оценка "А"') 
-    elif 80 <= average <= 89:
+    elif 80 <= average:
         print('Оценка "B"') 
-    elif 70 <= average <= 79:
+    elif 70 <= average:
         print('Оценка "C"') 
-    elif 60 <= average <= 69:
+    elif 60 <= average:
         print('Оценка "D"') 
     else:
         print('Оценка "F"')
