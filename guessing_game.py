@@ -1,10 +1,12 @@
 import random
 
 is_finished = False
-win_number = random.randint(1,100)
+LOW = 1
+HIGH = 100
+win_number = random.randint(LOW, HIGH)
 
 while not is_finished:
-    s_number = input('Введите число от 1 до 100: ')
+    s_number = input(f'Введите число от {LOW} до {HIGH}: ')
     if not s_number.isdigit():
         print('Вы ввели не число')
         continue
