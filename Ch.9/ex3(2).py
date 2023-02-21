@@ -30,4 +30,3 @@ inputfile.close()
 
 print(decoding(text))
 
-#Задать Кириллу вопрос, почему это работает?
