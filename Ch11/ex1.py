@@ -40,22 +40,25 @@ class ProductionWorker(Employee):
                  'Ставка: ' + self.get_bid()
         return result
 
-name = input('Введите имя сотрудника:\n')
-id = input('Введите ID сотрудника:\n')
-shift_number = input('Введите номер смены, где "1" - дневная, а "2" - вечерняя:\n')
-if shift_number == '1':
-    shift_number = 'Дневная'
-elif shift_number == '2':
-    shift_number = 'Вечерняя'
-else:
-    shift_number = shift_number
-bid = input('Введите почасовую оплату труда:\n')
 
-employee1 = ProductionWorker(name, id, shift_number, bid)
+def main():
+    name = input('Введите имя сотрудника:\n')
+    id = input('Введите ID сотрудника:\n')
+    shift_number = input('Введите номер смены, где "1" - дневная, а "2" - вечерняя:\n')
+    if shift_number == '1':
+        shift_number = 'Дневная'
+    elif shift_number == '2':
+        shift_number = 'Вечерняя'
+    else:
+        shift_number = shift_number
+    bid = input('Введите почасовую оплату труда:\n')
 
-print('Информация о сотруднике:')
-print(employee1)
+    employee1 = ProductionWorker(name, id, shift_number, bid)
 
+    print('Информация о сотруднике:')
+    print(employee1)
+if __name__ == "__main__":
+    main()
 
         
         

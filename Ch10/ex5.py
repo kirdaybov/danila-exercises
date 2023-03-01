@@ -25,3 +25,4 @@ class RetailItem:
 product_1 = RetailItem('Пиджак','12','59.95')
 product_2 = RetailItem('Дизайнерские джинсы','40','34.95')
 product_3 = RetailItem('Рубашка','20','24.95')   
+
