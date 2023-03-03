@@ -35,3 +35,4 @@ supervisor = ShiftSupervisor(name, id, annual_salary, annual_bonus)
 print('Информация о начальнике смены:')
 print(supervisor)
 
+#разобраться с Кириллом, почему он подгружает всю программу а не отдельный класс

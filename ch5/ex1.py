@@ -1,6 +1,6 @@
 def km_to_miles_converter(killometres):
     miles = killometres * 0.6214
-    return print(f'{killometres} км = {miles:.2f} миль') 
+    print(f'{killometres} км = {miles:.2f} миль') 
 
 killometres = float(input('Введите кол-во КМ:\n'))
 
