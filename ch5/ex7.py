@@ -2,10 +2,10 @@ def cost_class_A_seats(a):
     return a * 20
 
 def cost_class_B_seats(b):
-    return b * 20
+    return b * 15
 
 def cost_class_C_seats(c):
-    return c * 20
+    return c * 10
 
 seats_A = int(input('Сколько было продано мест класса "А":\n'))    
 seats_B = int(input('Сколько было продано мест класса "B":\n'))    
