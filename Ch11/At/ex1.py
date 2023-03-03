@@ -1,2 +1,0 @@
-class Poodle(Dog):
-    pass
