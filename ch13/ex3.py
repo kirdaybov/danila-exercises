@@ -4,7 +4,7 @@ import tkinter.messagebox
 def calculate_consumption():
     miles = float(miles_entry.get())
     gallons = float(gallons_entry.get())
-    result = miles / gallons
+    result = miles // gallons
     tkinter.messagebox.showinfo('Результат', 'Показатель миль на галлоны: ' + str(result))
 
 
