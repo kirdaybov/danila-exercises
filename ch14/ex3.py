@@ -54,8 +54,7 @@ def display_menu():
     print('13.Обновить существующего студента.')
     print('14.Удалить существующего студента.')
     print('15.Вывести список всех студентов.')
-
-    
+   
 def get_menu_choice():
     choice = int(input('Введите ваш вариант:\n'))
     while choice < MIN_CHOICE or choice > MAX_CHOICE:
@@ -196,3 +195,263 @@ def delete_student():
         num_deleted = delete_student(selected_id)
         print(f'{num_deleted} строк(а) удалено.')
 
+def insert_major(name): #вставляет строку в специальности
+    conn = None
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''INSERT INTO Majors (Name)
+                        VALUES (?)''',
+                        (name))
+        conn.commit()
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+
+def display_majors(): #выводит на экран все специальности
+    conn = None
+    results = []
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''SELECT * FROM Majors''')
+        results = cur.fetchall()
+
+        for row in results:
+            print(f'Специальность ID: {row[0]:<3} Специальность: {row[1]:<15}')
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+        return len(results)
+
+def display_major(name): #выводит на экран все позиции с совпадающими специальностями
+    conn = None
+    results = []
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''SELECT * FROM Majors
+                        WHERE ItemName == ?''',
+                        (name,))
+        results = cur.fetchall()
+
+        for row in results:
+            print(f'Специальность ID: {row[0]:<3} Специальность: {row[1]:<15}')
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+        return len(results)
+
+def update_major(id, name): #обновляет существующую специальность
+    conn = None
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''UPDATE Majors
+                        SET Name = ?
+                        WHERE MajorID == ?''',
+                        (name,id))
+        conn.commit()
+        major_updated = cur.rowcount
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+        return major_updated
+
+def delete_major(id): #удаляет существующую специальность
+    conn = None
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''DELETE FROM Majors
+                        WHERE MajorID == ?''',
+                        (id,))
+        conn.commit()
+        major_deleted = cur.rowcount
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+        return major_deleted
+
+def create_major():
+    print('Создать новую специальность')
+    name = input('Введите название специальности:\n')
+    insert_departments(name)
+
+def read_major():
+    name = input('Введите специальность:\n')
+    major_found = display_major(name)
+    print(f'{major_found} строк(а) найдено.')
+
+def update_major_menu():
+    read_major()
+    selected_id = int(input('Выберете ID специальности:\n'))
+    name = input('Введите новое название позиции:\n')
+    major_updated = update_major(selected_id, name)
+    print(f'{major_updated} строк(а) обновлено.')
+
+def delete_major_menu():
+    read_major()
+    selected_id = int(input('Выберете ID удаляемой позиции:\n'))
+    sure = input('Вы уверены, что хотите удалить эту позицию? (Y/N): \n')
+    if sure.upper() == 'Y':
+        major_deleted = delete_major(selected_id)
+        print(f'{major_deleted} строк(а) удалено.')
+
+def insert_department(name): #вставляет строку в факультеты
+    conn = None
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''INSERT INTO Departments (Name)
+                        VALUES (?)''',
+                        (name))
+        conn.commit()
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+
+def display_departments(): #выводит на экран все факультеты
+    conn = None
+    results = []
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''SELECT * FROM Departments''')
+        results = cur.fetchall()
+
+        for row in results:
+            print(f'Факультет ID: {row[0]:<3} Факультет: {row[1]:<15}')
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+        return len(results)
+
+def display_department(name): #выводит на экран все позиции с совпадающими факультетами
+    conn = None
+    results = []
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''SELECT * FROM Departments
+                        WHERE ItemName == ?''',
+                        (name,))
+        results = cur.fetchall()
+
+        for row in results:
+            print(f'Факультет ID: {row[0]:<3} Факультет: {row[1]:<15}')
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+        return len(results)
+
+def update_department(id, name): #обновляет существующий факультет
+    conn = None
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''UPDATE Departments
+                        SET Name = ?
+                        WHERE DeptID == ?''',
+                        (name,id))
+        conn.commit()
+        major_updated = cur.rowcount
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+        return major_updated
+
+def delete_department(id): #удаляет существующую специальность
+    conn = None
+    try:
+        conn = sqlite3.connect('student_info.db')
+        cur = conn.cursor()
+        cur.execute('''DELETE FROM Departments
+                        WHERE DeptID == ?''',
+                        (id,))
+        conn.commit()
+        major_deleted = cur.rowcount
+    except sqlite3.Error as err:
+        print('Ошибка базы данных', err)
+    finally:
+        if conn != None:
+            conn.close()
+        return major_deleted
+
+def create_department():
+    print('Создать новый факультет')
+    name = input('Введите название факультета:\n')
+    insert_departments(name)
+
+def read_department():
+    name = input('Введите факульет:\n')
+    major_found = display_department(name)
+    print(f'{major_found} строк(а) найдено.')
+
+def update_department_menu():
+    read_department()
+    selected_id = int(input('Выберете ID факультета:\n'))
+    name = input('Введите новое название позиции:\n')
+    department_updated = update_department(selected_id, name)
+    print(f'{department_updated} строк(а) обновлено.')
+
+def delete_department_menu():
+    read_department()
+    selected_id = int(input('Выберете ID удаляемой позиции:\n'))
+    sure = input('Вы уверены, что хотите удалить эту позицию? (Y/N): \n')
+    if sure.upper() == 'Y':
+        department_deleted = delete_department(selected_id)
+        print(f'{department_deleted} строк(а) удалено.')
+
+CHOICE = 0
+while CHOICE != EXIT:
+    display_menu()
+    CHOICE = get_menu_choice()
+    if CHOICE == CREATE_MAJOR:
+        create_major()
+    elif CHOICE == READ_MAJOR:
+        read_major()
+    elif CHOICE == UPDATE_MAJOR:
+        update_major_menu()
+    elif CHOICE == DELETE_MAJOR:
+        delete_major_menu()
+    elif CHOICE == SHOWALL_MAYOR:
+        display_majors
+    elif CHOICE == CREATE_DEPT:
+        create_department()
+    elif CHOICE == READ_DEPT:
+        read_department()
+    elif CHOICE == UPDATE_DEPT:
+        update_department_menu()
+    elif CHOICE == DELETE_DEPT:
+        delete_department_menu()
+    elif CHOICE == SHOWALL_DEPT:
+        display_departments
+    elif CHOICE == CREATE_STUD:
+        create_student()
+    elif CHOICE == READ_STUD:
+        read_student()
+    elif CHOICE == UPDATE_STUD:
+        update_student()
+    elif CHOICE == DELETE_STUD:
+        delete_student()
+    elif CHOICE == SHOWALL_STUD:
+        display_students
